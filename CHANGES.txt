@@ -10,7 +10,6 @@
  * Allow nodetool garbagecollect to take a user defined list of SSTables (CASSANDRA-16767)
  * Add a guardrail for misprepared statements (CASSANDRA-21139)
 Merged from 6.0:
-6.0-alpha3
  * Fix non-printable characters in Gossiper log for TOKENS (CASSANDRA-21417)
  * Fix compression dictionary training failing with "insufficient samples" on large-chunk tables (CASSANDRA-21666)
  * AccordExecutor improvements (CASSANDRA-21662)
@@ -37,7 +36,12 @@ Merged from 6.0:
  * Caffeine caches in CompressionDictionaryCache and ZstdDictionaryCompressor should specify an executor explicitly (CASSANDRA-21557)
  * Make cqlsh prompt to reset to no keyspace set by USE after dropping that keyspace (CASSANDRA-21548)
  * Implement CMS rediscovery and recovery protocol (CASSANDRA-20476)
+ * Apply performance optimizations for rows merging logic (CASSANDRA-21524)
+ * Fix operationMode reporting DECOMMISSION_FAILED instead of LEAVING when resuming a failed decommission (CASSANDRA-21493)
+ * Avoid megamorphic calls when serializing and deserializing fixed-length values (CASSANDRA-21536)
+ * Avoid megamorphic calls for Cell.timestamp/ttl/path/localDeletionTimeAsUnsignedInt methods (CASSANDRA-21526)
 Merged from 5.0:
+ * Release hints write buffer when the write executor shuts down (CASSANDRA-21657)
  * Fix concurrent SAI vector inserts failing once jvector's per-graph pool limit is exceeded (CASSANDRA-21644)
  * Unwrap LongType properly when calculating min/max terms in V1SSTableIndex (CASSANDRA-21635)
  * Force repair should ignore min_repair_interval (CASSANDRA-21552)
@@ -56,13 +60,10 @@ Merged from 4.0:
  * Do not make DNS lookup when querying system_views.clients for hostname column by removing it (CASSANDRA-21539)
  * Fix memtable on-heap accounting drift in BTree.update and BTreeRow.merge (CASSANDRA-21472)
  * Include missing cassandra-jaas.config file in Debian package (CASSANDRA-19750)
+ * Make runWithCompactionsDisabled return non-null on success (CASSANDRA-21527)
 
 
 6.0-alpha2
- * Apply performance optimizations for rows merging logic (CASSANDRA-21524)
- * Fix operationMode reporting DECOMMISSION_FAILED instead of LEAVING when resuming a failed decommission (CASSANDRA-21493)
- * Avoid megamorphic calls when serializing and deserializing fixed-length values (CASSANDRA-21536)
- * Avoid megamorphic calls for Cell.timestamp/ttl/path/localDeletionTimeAsUnsignedInt methods (CASSANDRA-21526)
  * Reduce allocations in DefaultQueryOptions (CASSANDRA-21467)
  * Allow unreserved keywords as user and identity names in USER and IDENTITY statements (CASSANDRA-21510)
  * Reduce allocations in DefaultQueryOptions (CASSANDRA-21467)
@@ -134,7 +135,6 @@ Merged from 5.0:
  * Use estimated compressed size for tables to check if there is enough free space for a compaction (CASSANDRA-21245)
  * Fix failing select on system_views.settings for non-string keys (CASSANDRA-21348)
 Merged from 4.0:
- * Make runWithCompactionsDisabled return non-null on success (CASSANDRA-21527)
  * Validate authz before performing role check in LIST ROLES/PERMISSIONS (CASSANDRA-21560)
  * Add validation to uncompressed length during decompression (CASSANDRA-21567)
  * Fix regression in PasswordObfuscator for dollar-quoted passwords (CASSANDRA-21559)
